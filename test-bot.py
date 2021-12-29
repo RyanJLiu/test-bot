@@ -39,10 +39,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    msg = str(event.message.text).upper().strip() # 使用者輸入的內容
-    profile = line_bot_api.get_profile(event.source.user_id)
-    user_name = profile.display_name #使用者名稱
-    uid = profile.user_id # 發訊者ID
+    msg = TextSendMassage(text=event.massage.text) # 使用者輸入的內容
     if re.match("test", msg):
         line_bot_api.reply_message(event, reply_token, "test success")
     elif re.match("測試", msg):
