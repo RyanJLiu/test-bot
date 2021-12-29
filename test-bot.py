@@ -40,16 +40,16 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    msg = str(event.message.text).upper().strip() # 使用者輸入的內容
-    profile = line_bot_api.get_profile(event.source.user_id)
-    user_name = profile.display_name #使用者名稱
-    uid = profile.user_id # 發訊者ID
-    if re.match("test", msg):
-        line_bot_api.push_message(uid, TextSendMessage("test success"))
-    elif re.match("測試", msg):
-        line_bot_api.push_message(uid, TextSendMessage("測試成功"))
-    else:
-        line_bot_api.reply_message(event.reply_token, msg)
+    msg = TextSendMessage(text=event.massage.text) # 使用者輸入的內容
+    #profile = line_bot_api.get_profile(event.source.user_id)
+    #user_name = profile.display_name #使用者名稱
+    #uid = profile.user_id # 發訊者ID
+    #if re.match("test", msg):
+    #    line_bot_api.push_message(uid, TextSendMessage("test success"))
+    #elif re.match("測試", msg):
+    #    line_bot_api.push_message(uid, TextSendMessage("測試成功"))
+    #else:
+    line_bot_api.reply_message(event.reply_token, msg)
 
 import os
 if __name__ == "__main__":
