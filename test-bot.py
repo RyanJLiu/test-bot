@@ -38,7 +38,15 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = TextSendMessage(text=event.message.text)
-    line_bot_api.reply_message(event.reply_token, msg)
+    if re.match("test", msg):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage("test success"))
+        return 0
+    elif re.match("test", msg):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage("測試成功"))
+        return 0
+    else:
+        line_bot_api.reply_message(event.reply_token, msg)
+        return 0
 
 import os
 if __name__ == "__main__":
