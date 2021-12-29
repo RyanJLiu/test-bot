@@ -40,9 +40,9 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = TextSendMessage(text=event.message.text)
-    if re.match("test", str(event.message.text).upper().strip()):
+    if ("test" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="test success"))
-    elif re.match("test", str(event.message.text).upper().strip()):
+    elif ("測試" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="測試成功"))
     else:
         line_bot_api.reply_message(event.reply_token, msg)
