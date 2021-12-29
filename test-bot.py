@@ -41,7 +41,7 @@ def callback():
 def handle_message(event):
     msg = TextSendMessage(text=event.message.text)
     if ("test" == str(event.message.text).upper().strip()):
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="test success"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="test_success"))
     elif ("測試" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="測試成功"))
     else:
