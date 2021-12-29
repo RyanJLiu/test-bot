@@ -41,14 +41,11 @@ def callback():
 def handle_message(event):
     msg = TextSendMessage(text=event.message.text)
     if re.match("test", msg):
-        line_bot_api.reply_message(event.reply_token, TextSendMessage("test success"))
-        return 0
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="test success"))
     elif re.match("test", msg):
-        line_bot_api.reply_message(event.reply_token, TextSendMessage("測試成功"))
-        return 0
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="測試成功"))
     else:
         line_bot_api.reply_message(event.reply_token, msg)
-        return 0
 
 import os
 if __name__ == "__main__":
