@@ -11,6 +11,7 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
+from linebot.models import *
 
 app = Flask(__name__)
 
@@ -39,11 +40,14 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    msg = TextSendMassage(text=event.massage.text)
+    msg = str(event.message.text).upper().strip() # 使用者輸入的內容
+    profile = line_bot_api.get_profile(event.source.user_id)
+    user_name = profile.display_name #使用者名稱
+    uid = profile.user_id # 發訊者ID
     if (msg=="test"):
-        line_bot_api.reply_message(event, reply_token, "test success")
+        line_bot_api.push_message(uid, TextSendMessage("test success"))
     elif (msg=="測試"):
-        line_bot_api.reply_message(event, reply_token, "測試成功")
+        line_bot_api.push_message(uid, TextSendMessage("測試成功"))
     else:
         line_bot_api.reply_message(event.reply_token, msg)
 
