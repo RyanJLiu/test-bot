@@ -49,7 +49,7 @@ def handle_message(event):
     elif re.match("測試", msg):
         line_bot_api.reply_message(event, reply_token, "測試中")
         line_bot_api.reply_message(event, reply_token, "測試成功")
-    else
+    else:
         line_bot_api.reply_message(event.reply_token, msg)
 
 import os
