@@ -44,10 +44,8 @@ def handle_message(event):
     user_name = profile.display_name #使用者名稱
     uid = profile.user_id # 發訊者ID
     if re.match("test", msg):
-        line_bot_api.reply_message(event, reply_token, "testing")
         line_bot_api.reply_message(event, reply_token, "test success")
     elif re.match("測試", msg):
-        line_bot_api.reply_message(event, reply_token, "測試中")
         line_bot_api.reply_message(event, reply_token, "測試成功")
     else:
         line_bot_api.reply_message(event.reply_token, msg)
