@@ -1,5 +1,7 @@
 from flask import Flask, request, abort
 
+import re
+
 from linebot import (
     LineBotApi, WebhookHandler
 )
