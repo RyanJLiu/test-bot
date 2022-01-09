@@ -8,6 +8,6 @@ to = "Ud0b3296f8e4a70520b4ed2f2d1b3bdd8"
 line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
 
 try:
-    line_bot_api.push_message(to, TextSendMessage(text='Time to sleep.'))
+    line_bot_api.push_message(to, TextSendMessage(text='Time for lunch.'))
 except LineBotApiError as e:
     raise e
