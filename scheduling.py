@@ -8,12 +8,20 @@ to = "Ud0b3296f8e4a70520b4ed2f2d1b3bdd8"
 
 line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
 
-connect_db = pymysql.connect(host='localhost', port=3306, user='root', passwd='', charset='utf8', db='bot_test')
+connect_db = pymysql.connect(host='localhost', port=3306, user='the_bot', passwd='TestBot001', charset='utf8', db='bot_test')
 
 with connect_db.cursor() as cursor:
+
+    name="""
+    SELECT 姓名 from medicine WHERE 編號='0013456'
+    """
+    
     sql = """
     SELECT 藥名, 備註 from medicine WHERE 編號='0013456'
     """
+    
+    cursor.execute(name)
+    reply=cursor.fetchone()
     
     # 執行 SQL 指令
     cursor.execute(sql)
@@ -25,6 +33,6 @@ with connect_db.cursor() as cursor:
 connect_db.close()
 
 try:
-    line_bot_api.push_message(to, TextSendMessage(text=data))
+    line_bot_api.push_message(to, TextSendMessage(text='dear '+str(reply[0])+' 請記得用藥\n'+str(data[0])+'\n'+str(data[1])))
 except LineBotApiError as e:
     raise e
