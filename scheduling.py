@@ -13,9 +13,9 @@ connection = pymysql.connect(host=os.environ.get('CLEARDB_DATABASE_HOST'),
                              password=os.environ.get('CLEARDB_DATABASE_PASSWORD'),
                              db=os.environ.get('CLEARDB_DATABASE_DB'),
                              charset='utf8mb4',
-                             cursorclass=pymysql.cursors.DictCursor))
+                             cursorclass=pymysql.cursors.DictCursor)
 
-with connect_db.cursor() as cursor:
+with connection.cursor() as cursor:
 
     getname="""
     SELECT 姓名 from medicine WHERE 編號='0013456'
