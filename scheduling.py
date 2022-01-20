@@ -9,7 +9,7 @@ to = "Ud0b3296f8e4a70520b4ed2f2d1b3bdd8"
 
 line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
 
-connection = pymysql.connect('us-cdbr-east-05.cleardb.net', user='bb92b47b5b40af', passwd='ad501df8', charset='utf8', db='heroku_c420746d6bd4d14')
+connection = pymysql.connect(host='us-cdbr-east-05.cleardb.net', user='bb92b47b5b40af', passwd='ad501df8', charset='utf8', db='heroku_c420746d6bd4d14')
 
 
 with connection.cursor() as cursor:
