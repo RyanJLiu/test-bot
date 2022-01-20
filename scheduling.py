@@ -9,12 +9,8 @@ to = "Ud0b3296f8e4a70520b4ed2f2d1b3bdd8"
 
 line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
 
-connection = pymysql.connect(host=os.environ.get('CLEARDB_DATABASE_HOST'),
-                             user=os.environ.get('CLEARDB_DATABASE_USER'),
-                             password=os.environ.get('CLEARDB_DATABASE_PASSWORD'),
-                             db=os.environ.get('CLEARDB_DATABASE_DB'),
-                             charset='utf8mb4',
-                             cursorclass=pymysql.cursors.DictCursor)
+connection = pymysql.connect('us-cdbr-east-05.cleardb.net', user='bb92b47b5b40af', passwd='ad501df8', charset='utf8', db='heroku_c420746d6bd4d14')
+
 
 with connection.cursor() as cursor:
 
