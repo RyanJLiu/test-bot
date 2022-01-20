@@ -8,12 +8,12 @@ to = "Ud0b3296f8e4a70520b4ed2f2d1b3bdd8"
 
 line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
 
-connect_db = pymysql.connect(connection = pymysql.connect(host=os.environ.get('CLEARDB_DATABASE_HOST'),
+connection = pymysql.connect(host=os.environ.get('CLEARDB_DATABASE_HOST'),
                              user=os.environ.get('CLEARDB_DATABASE_USER'),
                              password=os.environ.get('CLEARDB_DATABASE_PASSWORD'),
                              db=os.environ.get('CLEARDB_DATABASE_DB'),
                              charset='utf8mb4',
-                             cursorclass=pymysql.cursors.DictCursor)
+                             cursorclass=pymysql.cursors.DictCursor))
 
 with connect_db.cursor() as cursor:
 
@@ -31,7 +31,7 @@ with connect_db.cursor() as cursor:
     cursor.execute(sql)
     data = cursor.fetchall()
 
-connect_db.close()
+connection.close()
 
 try:
     line_bot_api.push_message(to, TextSendMessage(text='dear '+str(name[0])+' 請記得用藥\n'+str(data[0])+'\n'+str(data[1])))
