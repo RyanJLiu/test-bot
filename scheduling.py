@@ -2,6 +2,7 @@ from linebot import LineBotApi
 from linebot.models import TextSendMessage, ImageSendMessage
 from linebot.exceptions import LineBotApiError
 import pymysql
+import os
 
 CHANNEL_ACCESS_TOKEN = "UYBnsEo8qLdA4aQAdbX/NUxy9L86NT5epTsoy8d3h2xRItfJyecH49jRkUP26eHbHqN6FCUyboStjuk7TMg/a1u+c+z9mS/CvKJ2/g3my9olG4CQy2yLfHO3ceORUy5CxufKXbUl1xyG7nGHSsM7IwdB04t89/1O/w1cDnyilFU="
 to = "Ud0b3296f8e4a70520b4ed2f2d1b3bdd8"
