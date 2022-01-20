@@ -8,7 +8,12 @@ to = "Ud0b3296f8e4a70520b4ed2f2d1b3bdd8"
 
 line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
 
-connect_db = pymysql.connect(host='10.0.0.129', port=3306, user='the_bot', passwd='TestBot001', charset='utf8', db='bot_test')
+connect_db = pymysql.connect(connection = pymysql.connect(host=os.environ.get('CLEARDB_DATABASE_HOST'),
+                             user=os.environ.get('CLEARDB_DATABASE_USER'),
+                             password=os.environ.get('CLEARDB_DATABASE_PASSWORD'),
+                             db=os.environ.get('CLEARDB_DATABASE_DB'),
+                             charset='utf8mb4',
+                             cursorclass=pymysql.cursors.DictCursor)
 
 with connect_db.cursor() as cursor:
 
