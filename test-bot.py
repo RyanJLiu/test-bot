@@ -39,9 +39,9 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if ("User Set" == str(event.message.text).upper().strip()):
+    if ("USER SET" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="loading"))
-    elif ("User Manual" == str(event.message.text).upper().strip()):
+    elif ("USER MANUAL" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="This is a bot developed for patients to solving problems recovering at home."))
     elif ("測試" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="測試成功"))
