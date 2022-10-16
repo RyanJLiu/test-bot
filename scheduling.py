@@ -10,7 +10,7 @@ CHANNEL_ACCESS_TOKEN = "UYBnsEo8qLdA4aQAdbX/NUxy9L86NT5epTsoy8d3h2xRItfJyecH49jR
 line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
 
 tn=time.localtime();
-tnow=time.strftime("%H:%M:00", tn)
+tnow=time.strftime("%#H:%M:00", tn)
 
 connect_db = pymysql.connect(host='us-cdbr-east-05.cleardb.net', user='bb92b47b5b40af', passwd='ad501df8', charset='utf8', db='heroku_c420746d6bd4d14')
 
