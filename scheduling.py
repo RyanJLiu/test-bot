@@ -72,3 +72,5 @@ def med_mind():
             line_bot_api.push_message(to, TextSendMessage(text='dear '+str(reply[0])+' 請記得用藥\n'+str(data[0][0])+'，'+str(data[0][1])))
         except LineBotApiError as e:
             raise e
+
+    line_bot_api.push_message(to, TextSendMessage(text='現在時間'+tnow)
