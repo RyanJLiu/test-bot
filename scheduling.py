@@ -73,4 +73,4 @@ def med_mind():
         except LineBotApiError as e:
             raise e
 
-    line_bot_api.push_message(to, TextSendMessage(text='現在時間'+tnow)
+    line_bot_api.push_message(to, TextSendMessage(text='現在時間'+tnow))
