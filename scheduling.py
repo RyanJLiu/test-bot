@@ -17,60 +17,69 @@ def med_mind():
 
     with connect_db.cursor() as cursor:
 
-        tim="""
-        SELECT 帳號, 早餐, 午餐, 晚餐, 睡眠 from user WHERE 姓名 ='UserA'
+        personal="""
+        SELECT * from user
         """
         
-        med = """
-        SELECT 藥品, 備註, 早餐, 午餐, 晚餐, 睡前 from offer WHERE 病歷號碼 ='10000001'
+        offer = """
+        SELECT * from offer WHERE `User id` = %s
         """
 
         name="""
-        SELECT 姓名 from clients WHERE 病歷號碼 ='10000001'
-        """    
+        SELECT 姓名 from clients WHERE `User id` = %s
+        """
 
-        cursor.execute(tim)
-        stim=cursor.fetchall()
-        
-        cursor.execute(med)
-        data = cursor.fetchall()
+        med="""
+        SELECT 品名 from medicine WHERE `編號` = %s
+        """
 
-        cursor.execute(name)
-        reply=cursor.fetchone()
+        cursor.execute(personal)
+        pers=cursor.fetchall()
+
+        for users in pers:
+            to=users[0]
         
+            cursor.execute(offer,[users[1]])
+            data = cursor.fetchall()
+
+            cursor.execute(name,[users[1]])
+            reply=cursor.fetchone()
+
+            for row in data:
+                cursor.execute(med, [row[1]])
+                med_name = cursor.fetchone()
+            
+                to=users[0]
+                if row[5]:
+                    tbre=users[3]
+                else:
+                    tbre='false'
+                if row[6]:
+                    tlun=users[4]
+                else:
+                    tlun='false'
+                if row[7]:
+                    tdin=users[5]
+                else:
+                    tdin='false'
+                if row[8]:
+                    tnig=users[6]
+                else:
+                    tnig='false'
+                if tnow==str(tbre):
+                    flag=1
+                elif tnow==str(tlun):
+                    flag=1
+                elif tnow==str(tdin):
+                    flag=1
+                elif tnow==str(tnig):
+                    flag=1
+                else:
+                    flag=0
+                if flag==1:
+                    try:
+                        line_bot_api.push_message(to, TextSendMessage(text='dear '+str(reply[0])+' 請記得用藥\n'+str(med_name[0])+'，'+str(row[9])))
+                    except LineBotApiError as e:
+                        raise e
+                
     connect_db.close()
-
-    to=stim[0][0]
-    if data[0][2]:
-        tbre=stim[0][1]
-    else:
-        tbre='false'
-    if data[0][3]:
-        tlun=stim[0][2]
-    else:
-        tlun='false'
-    if data[0][4]:
-        tdin=stim[0][3]
-    else:
-        tdin='false'
-    if data[0][5]:
-        tnig=stim[0][4]
-    else:
-        tnig='false'
-    if tnow==str(tbre):
-        flag=1
-    elif tnow==str(tlun):
-        flag=1
-    elif tnow==str(tdin):
-        flag=1
-    elif tnow==str(tnig):
-        flag=1
-    else:
-        flag=0
-    if flag==1:
-        try:
-            line_bot_api.push_message(to, TextSendMessage(text='dear '+str(reply[0])+' 請記得用藥\n'+str(data[0][0])+'，'+str(data[0][1])))
-        except LineBotApiError as e:
-            raise e
-
-    line_bot_api.push_message(to, TextSendMessage(text='現在時間'+tnow))
