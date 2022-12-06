@@ -54,12 +54,14 @@
 		msg = msg + pamount + "/";
 		msg = msg + pdrink + "/";
 		msg = msg + pextra;
+        alert(msg);
 		liff.sendMessages([  //推播訊息
 			{ type: 'text',
 			  text: msg
 			}
 		])
 			.then(() => {
+                alert("send success");
 				liff.closeWindow();  //關閉視窗
 			});
 	}
