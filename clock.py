@@ -3,7 +3,7 @@ import scheduling
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', minutes=30)
+@sched.scheduled_job('interval', minutes=20)
 def scheduled_job():
     url = "https://test-bot-first.herokuapp.com/"
     conn = urllib.request.urlopen(url)
