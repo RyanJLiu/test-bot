@@ -19,7 +19,7 @@ handler = WebhookHandler('0a0caaf1002fb8f6c80362f8f88cc716')
 
 @app.route("/")
 def home():
-    return render_template("set.php")
+    return render_template("https://bot-data-collection.herokuapp.com")
 
 @app.route("/callback", methods=['POST'])
 def callback():
