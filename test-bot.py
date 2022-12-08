@@ -43,14 +43,16 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if ("USER SET" == str(event.message.text).upper().strip()):
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="loading"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請前往此網站以修改設定/nhttps://liff.line.me/1657681037-2zmOZl30"))
     elif ("USER MANUAL" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="This is a bot developed for patients to solving problems recovering at home."))
+    elif ("Schedule Check" == str(event.message.text).upper().strip()):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Checking..."))
+    elif ("Emergency Call" == str(event.message.text).upper().strip()):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="119"))
     elif ("測試" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="測試成功"))
-    else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="I do not understand your question please write it clearly."))
-
+        
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
