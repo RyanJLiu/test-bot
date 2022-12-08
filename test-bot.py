@@ -17,10 +17,6 @@ app = Flask(__name__)
 line_bot_api = LineBotApi('UYBnsEo8qLdA4aQAdbX/NUxy9L86NT5epTsoy8d3h2xRItfJyecH49jRkUP26eHbHqN6FCUyboStjuk7TMg/a1u+c+z9mS/CvKJ2/g3my9olG4CQy2yLfHO3ceORUy5CxufKXbUl1xyG7nGHSsM7IwdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('0a0caaf1002fb8f6c80362f8f88cc716')
 
-@app.route("/")
-def home():
-    return render_template("https://bot-data-collection.herokuapp.com")
-
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -43,7 +39,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if ("USER SET" == str(event.message.text).upper().strip()):
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請前往此網站以修改設定/nhttps://liff.line.me/1657681037-2zmOZl30"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請前往此網站以修改設定\nhttps://liff.line.me/1657681037-2zmOZl30"))
     elif ("USER MANUAL" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="This is a bot developed for patients to solving problems recovering at home."))
     elif ("Schedule Check" == str(event.message.text).upper().strip()):
