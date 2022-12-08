@@ -40,7 +40,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if ("USER SET" == str(event.message.text).upper().strip()):
-        line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="", contents=flexs.setting))
+        line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="nothing", contents=flexs.setting))
     elif("設定時間" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請前往此網站以修改設定\nhttps://liff.line.me/1657681037-8xpGL6E9"))
     elif("設定個人資料" == str(event.message.text).upper().strip()):
