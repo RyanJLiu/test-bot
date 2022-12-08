@@ -1,7 +1,6 @@
 import json
 
-setting=
-{
+setting={
   "type": "bubble",
   "header": {
     "type": "box",
