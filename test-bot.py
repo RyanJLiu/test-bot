@@ -1,5 +1,6 @@
 from flask import Flask, request, abort, render_template
-
+import flexs
+import json
 import re
 
 from linebot import (
@@ -9,7 +10,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
+    MessageEvent, TextMessage, TextSendMessage, FlexSendMessage
 )
 
 app = Flask(__name__)
@@ -39,7 +40,11 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if ("USER SET" == str(event.message.text).upper().strip()):
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請前往此網站以修改設定\nhttps://liff.line.me/1657681037-2zmOZl30"))
+        line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="", contents=flexs.setting))
+    elif("設定時間" == str(event.message.text).upper().strip()):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請前往此網站以修改設定\nhttps://liff.line.me/1657681037-8xpGL6E9"))
+    elif("設定個人資料" == str(event.message.text).upper().strip()):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請前往此網站以修改設定\nhttps://liff.line.me/1657681037-jQkN7qOw"))
     elif ("USER MANUAL" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="This is a bot developed for patients to solving problems recovering at home."))
     elif ("Schedule Check" == str(event.message.text).upper().strip()):
