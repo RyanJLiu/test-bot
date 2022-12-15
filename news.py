@@ -48,11 +48,7 @@ with connect_db.cursor() as cursor:
     """
 
     target="""
-    SELECT `User id` FROM web_trace WHERE `網站` = %s
-    """
-
-    finduser="""
-    SELECT 帳號 FROM user WHERE `User id` = %s
+    SELECT 帳號 FROM web_trace WHERE `網站` = %s
     """
 
     changes=[]
@@ -73,10 +69,8 @@ with connect_db.cursor() as cursor:
         cursor.execute(target,[chan[0]])
         sends=cursor.fetchall()
         for send in sends:
-            cursor.execute(finduser,[send[0]])
-            to=cursor.fetchone()
             try:
-                line_bot_api.push_message(to[0], TextSendMessage(text='「'+str(chan[0])+'」網站已更新\n'+str(chan[1])))
+                line_bot_api.push_message(send[0], TextSendMessage(text='「'+str(chan[0])+'」網站已更新\n'+str(chan[1])))
             except LineBotApiError as e:
                 raise e
 

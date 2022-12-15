@@ -60,7 +60,7 @@ def handle_message(event):
     elif ("SCHEDULE CHECK" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Checking..."))
     elif ("EMERGENCY CALL" == str(event.message.text).upper().strip()):
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="119"))
+        line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="nothing", contents=flexs.emergency))
     elif ("測試" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="測試成功"))
         

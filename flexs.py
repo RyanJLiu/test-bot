@@ -47,6 +47,50 @@ setting={
   }
 }
 
+
+emergency={
+  "type": "bubble",
+  "header": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "緊急呼叫",
+        "weight": "bold"
+      }
+    ]
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "打119",
+        "action": {
+          "type": "uri",
+          "label": "action",
+          "uri": "tel://119"
+        }
+      },
+      {
+        "type": "separator",
+        "margin": "md"
+      },
+      {
+        "type": "text",
+        "text": "聯絡護理師"
+      }
+    ]
+  },
+  "styles": {
+    "header": {
+      "backgroundColor": "#FF0000"
+    }
+  }
+}
+
 helper={
   "type": "bubble",
   "header": {
