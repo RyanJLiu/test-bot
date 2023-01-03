@@ -22,15 +22,7 @@ def med_mind():
         """
         
         offer = """
-        SELECT * from offer WHERE `User id` = %s
-        """
-
-        name="""
-        SELECT 姓名 from clients WHERE `User id` = %s
-        """
-
-        med="""
-        SELECT 品名 from medicine WHERE `編號` = %s
+        SELECT * from offer WHERE `帳號` = %s
         """
 
         cursor.execute(personal)
@@ -39,31 +31,24 @@ def med_mind():
         for users in pers:
             to=users[0]
         
-            cursor.execute(offer,[users[1]])
+            cursor.execute(offer,[users[0]])
             data = cursor.fetchall()
 
-            cursor.execute(name,[users[1]])
-            reply=cursor.fetchone()
-
             for row in data:
-                cursor.execute(med, [row[1]])
-                med_name = cursor.fetchone()
-            
-                to=users[0]
-                if row[5]:
-                    tbre=users[3]
+                if row[4]:
+                    tbre=users[2]
                 else:
                     tbre='false'
-                if row[6]:
-                    tlun=users[4]
+                if row[5]:
+                    tlun=users[3]
                 else:
                     tlun='false'
-                if row[7]:
-                    tdin=users[5]
+                if row[6]:
+                    tdin=users[4]
                 else:
                     tdin='false'
-                if row[8]:
-                    tnig=users[6]
+                if row[7]:
+                    tnig=users[5]
                 else:
                     tnig='false'
                 if tnow==str(tbre):
@@ -78,7 +63,7 @@ def med_mind():
                     flag=0
                 if flag==1:
                     try:
-                        line_bot_api.push_message(to, TextSendMessage(text='dear '+str(reply[0])+' 請記得用藥\n'+str(med_name[0])+'，'+str(row[9])))
+                        line_bot_api.push_message(to, TextSendMessage(text='請記得用藥\n'+str(row[0])+'，'+str(row[8])))
                     except LineBotApiError as e:
                         raise e
                 

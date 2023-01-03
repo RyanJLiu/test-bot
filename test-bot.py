@@ -40,15 +40,15 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if ("USER SET" == str(event.message.text).upper().strip()):
-        line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="nothing", contents=flexs.setting))
+        line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="設定", contents=flexs.setting))
     elif("設定作息時間" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請前往此網站以修改設定\nhttps://liff.line.me/1657681037-8xpGL6E9"))
     elif("設定個人資料" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請前往此網站以修改設定\nhttps://liff.line.me/1657681037-LvkoejpY"))
     elif ("HELP" == str(event.message.text).upper().strip()):
-        line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="nothing", contents=flexs.helper))
+        line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="幫助", contents=flexs.helper))
     elif ("USER MANUAL" == str(event.message.text).upper().strip()):
-        line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="nothing", contents=flexs.helper))
+        line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="使用說明", contents=flexs.helper))
     elif ("設定" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="點選選單左上角按鈕，可設定個人資料或作息時間"))
     elif ("行程" == str(event.message.text).upper().strip()):
@@ -57,10 +57,16 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="This is a bot developed for patients to solving problems recovering at home."))
     elif ("緊急呼叫" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="點選選單右下角按鈕，可連絡護理師或撥打緊急電話"))
-    elif ("SCHEDULE CHECK" == str(event.message.text).upper().strip()):
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Checking..."))
+    elif ("SCHEDULE" == str(event.message.text).upper().strip()):
+        line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="行程", contents=flexs.schedule))
+    elif ("新增行程" == str(event.message.text).upper().strip()):
+        line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="新增行程", contents=flexs.scheduleset))
+    elif("新增藥物提醒" == str(event.message.text).upper().strip()):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請前往此網站以修改設定\nhttps://liff.line.me/1657681037-prZ3j6gK"))
+    elif ("行程確認" == str(event.message.text).upper().strip()):
+        line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="行程確認", contents=flexs.schedulecheck))
     elif ("EMERGENCY CALL" == str(event.message.text).upper().strip()):
-        line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="nothing", contents=flexs.emergency))
+        line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="緊急呼叫", contents=flexs.emergency))
     elif ("測試" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="測試成功"))
         
