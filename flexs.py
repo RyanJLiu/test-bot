@@ -66,7 +66,7 @@ emergency={
     "layout": "vertical",
     "contents": [
       {
-        "type": "text",
+        "type": "button",
         "text": "打119",
         "action": {
           "type": "uri",
@@ -79,7 +79,7 @@ emergency={
         "margin": "md"
       },
       {
-        "type": "text",
+        "type": "button",
         "text": "聯絡護理師"
       }
     ]

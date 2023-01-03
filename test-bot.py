@@ -44,7 +44,7 @@ def handle_message(event):
     elif("設定作息時間" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請前往此網站以修改設定\nhttps://liff.line.me/1657681037-8xpGL6E9"))
     elif("設定個人資料" == str(event.message.text).upper().strip()):
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請前往此網站以修改設定\nhttps://liff.line.me/1657681037-5mbzpENv"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請前往此網站以修改設定\nhttps://liff.line.me/1657681037-LvkoejpY"))
     elif ("HELP" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="nothing", contents=flexs.helper))
     elif ("USER MANUAL" == str(event.message.text).upper().strip()):
