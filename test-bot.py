@@ -67,6 +67,8 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="行程確認", contents=flexs.schedulecheck))
     elif ("EMERGENCY CALL" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="緊急呼叫", contents=flexs.emergency))
+    elif ("輕微頭痛" == str(event.message.text).upper().strip()):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="稍作休息即可"))
     elif ("測試" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="測試成功"))
         
