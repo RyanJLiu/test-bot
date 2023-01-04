@@ -70,7 +70,7 @@ emergency={
         "text": "打119",
         "action": {
           "type": "uri",
-          "label": "action",
+          "label": "打119",
           "uri": "tel://119"
         }
       },
