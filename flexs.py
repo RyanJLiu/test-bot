@@ -79,7 +79,7 @@ emergency={
         "margin": "md"
       },
       {
-        "type": "button",
+        "type": "text",
         "text": "聯絡護理師"
       }
     ]
