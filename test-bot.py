@@ -61,7 +61,7 @@ def handle_message(event):
             funcparser.s(0,Userid)
         else:
             repman=funcparser.setMan(Userid, str(event.message.text))
-            fincparser.s(0,Userid)
+            funcparser.s(0,Userid)
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=repset))
     elif ("USER SET" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="設定", contents=flexs.setting))
@@ -96,9 +96,8 @@ def handle_message(event):
     elif ("身體嚴重不適" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="緊急呼叫", contents=flexs.emergency))
     elif ("更改護理師" == str(event.message.text).upper().strip()):
-        
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入新護理師姓名或取消"))
         funcparser.s(1,Userid)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入新護理師姓名或取消"))
     elif ("聯絡護理師" == str(event.message.text).upper().strip()):
         funcparser.s(2,Userid)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入內容或取消"))
