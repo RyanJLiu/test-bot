@@ -1,5 +1,6 @@
 from flask import Flask, request, abort, render_template
 import flexs
+import funcparser
 import json
 import re
 
@@ -39,7 +40,30 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if ("USER SET" == str(event.message.text).upper().strip()):
+    Userid = event.source.user_id
+    stat=funcparser.getstat(Userid)
+    if (funcparser.chq(str(event.message.text))==1):
+        repque=funcparser.que(str(event.message.text))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=repque))
+    if (stat==2):
+        if("CANCEL" == str(event.message.text).upper().strip()):
+            funcparser.s0(Userid)
+        elif("取消" == str(event.message.text).upper().strip()):
+            funcparser.s0(Userid)
+        else:
+            repcall=funcparser.callMan(Userid, str(event.message.text))
+            funcparser.s0(Userid)
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=repcall))
+    elif (stat==1):
+        if("CANCEL" == str(event.message.text).upper().strip()):
+            funcparser.s0(Userid)
+        elif("取消" == str(event.message.text).upper().strip()):
+            funcparser.s0(Userid)
+        else:
+            repman=funcparser.setMan(Userid, str(event.message.text))
+            fincparser.s0(Userid)
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=repset))
+    elif ("USER SET" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="設定", contents=flexs.setting))
     elif("設定作息時間" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請前往此網站以修改設定\nhttps://liff.line.me/1657681037-8xpGL6E9"))
@@ -61,14 +85,31 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="行程", contents=flexs.schedule))
     elif ("新增行程" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="新增行程", contents=flexs.scheduleset))
+    elif("新增外出行程" == str(event.message.text).upper().strip()):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請前往此網站以新增行程\nhttps://liff.line.me/1657681037-VMyk6Ob8"))
     elif("新增藥物提醒" == str(event.message.text).upper().strip()):
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請前往此網站以修改設定\nhttps://liff.line.me/1657681037-prZ3j6gK"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請前往此網站以新增提醒\nhttps://liff.line.me/1657681037-prZ3j6gK"))
     elif ("行程確認" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="行程確認", contents=flexs.schedulecheck))
     elif ("EMERGENCY CALL" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="緊急呼叫", contents=flexs.emergency))
-    elif ("輕微頭痛" == str(event.message.text).upper().strip()):
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="稍作休息即可"))
+    elif ("身體嚴重不適" == str(event.message.text).upper().strip()):
+        line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="緊急呼叫", contents=flexs.emergency))
+    elif ("更改護理師" == str(event.message.text).upper().strip()):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入新護理師姓名或取消"))
+    elif ("聯絡護理師" == str(event.message.text).upper().strip()):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入內容或取消"))
+    elif ("查詢個人設定" == str(event.message.text).upper().strip()):
+        repset=funcparser.getset(Userid);
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=repset))
+    elif ("確認外出行程" == str(event.message.text).upper().strip()):
+        repsch=funcparser.getsch(Userid);
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=repsch))
+    elif ("確認藥物提醒" == str(event.message.text).upper().strip()):
+        repmed=funcparser.getmed(Userid);
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=repmed))
+    elif ("疑難雜症" == str(event.message.text).upper().strip()):
+        line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="疑難雜症", contents=flexs.question))
     elif ("測試" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="測試成功"))
         

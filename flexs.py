@@ -1,5 +1,95 @@
 import json
 
+question={
+  "type": "bubble",
+  "header": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "疑難雜症",
+        "weight": "bold"
+      }
+    ]
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "輕微頭痛",
+          "text": "輕微頭痛"
+        }
+      },
+      {
+        "type": "separator"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "胸悶",
+          "text": "胸悶"
+        }
+      },
+      {
+        "type": "separator"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "喉嚨痛",
+          "text": "喉嚨痛"
+        }
+      },
+      {
+        "type": "separator"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "肚子痛",
+          "text": "肚子痛"
+        }
+      },
+      {
+        "type": "separator"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "心情不好",
+          "text": "心情不好"
+        }
+      },
+      {
+        "type": "separator"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "身體嚴重不適",
+          "text": "身體嚴重不適"
+        },
+        "color": "#FF0000"
+      }
+    ]
+  },
+  "styles": {
+    "header": {
+      "backgroundColor": "#00B800"
+    }
+  }
+}
+
 setting={
   "type": "bubble",
   "header": {
@@ -36,6 +126,32 @@ setting={
           "type": "message",
           "text": "設定作息時間",
           "label": "設定作息時間"
+        }
+      },
+      {
+        "type": "separator",
+        "margin": "md"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "text": "更改護理師",
+          "label": "更改護理師
+          "
+        }
+      },
+      {
+        "type": "separator",
+        "margin": "md"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "text": "查詢個人設定",
+          "label": "查詢個人設定
+          "
         }
       }
     ]
@@ -79,8 +195,11 @@ emergency={
         "margin": "md"
       },
       {
-        "type": "text",
-        "text": "聯絡護理師"
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "聯絡護理師",
+          "text": "聯絡護理師"
       }
     ]
   },
@@ -248,6 +367,17 @@ helper={
         "type": "button",
         "action": {
           "type": "message",
+          "label": "疑難雜症",
+          "text": "疑難雜症"
+        }
+      },
+      {
+        "type": "separator"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
           "label": "設定",
           "text": "設定"
         }
@@ -283,7 +413,8 @@ helper={
           "type": "message",
           "label": "緊急呼叫",
           "text": "緊急呼叫"
-        }
+        },
+        "color": "#FF0000"
       }
     ]
   },
