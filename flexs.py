@@ -198,6 +198,7 @@ emergency={
           "type": "message",
           "label": "聯絡護理師",
           "text": "聯絡護理師"
+          }
       }
     ]
   },
