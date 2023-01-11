@@ -23,7 +23,21 @@ def que(instr):
         return "找點開心的事做吧"
     else :
         return "我不太確定該說什麼"
-    
+
+def getstat(userid):
+    connect_db = pymysql.connect(host='us-cdbr-east-05.cleardb.net', user='bb92b47b5b40af', passwd='ad501df8', charset='utf8', db='heroku_c420746d6bd4d14')
+
+    with connect_db.cursor() as cursor:
+
+        stat="""
+        SELECT * from stat where 帳號 = %s
+        """
+
+        cursor.execute(stat,[userid])
+        st=cursor.fetchone()
+        
+    connect_db.close()
+    return st[1]
 def s0(userid):
     connect_db = pymysql.connect(host='us-cdbr-east-05.cleardb.net', user='bb92b47b5b40af', passwd='ad501df8', charset='utf8', db='heroku_c420746d6bd4d14')
 
