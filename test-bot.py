@@ -62,7 +62,7 @@ def handle_message(event):
         else:
             repman=funcparser.setMan(Userid, str(event.message.text))
             funcparser.s(0,Userid)
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=repset))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=repman))
     elif ("USER SET" == str(event.message.text).upper().strip()):
         line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text="設定", contents=flexs.setting))
     elif("設定作息時間" == str(event.message.text).upper().strip()):
