@@ -137,8 +137,7 @@ setting={
         "action": {
           "type": "message",
           "text": "更改護理師",
-          "label": "更改護理師
-          "
+          "label": "更改護理師"
         }
       },
       {
@@ -150,8 +149,7 @@ setting={
         "action": {
           "type": "message",
           "text": "查詢個人設定",
-          "label": "查詢個人設定
-          "
+          "label": "查詢個人設定"
         }
       }
     ]
