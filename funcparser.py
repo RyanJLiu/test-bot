@@ -38,16 +38,16 @@ def getstat(userid):
         
     connect_db.close()
     return st[1]
-def s0(userid):
+def s(st, userid):
     connect_db = pymysql.connect(host='us-cdbr-east-05.cleardb.net', user='bb92b47b5b40af', passwd='ad501df8', charset='utf8', db='heroku_c420746d6bd4d14')
 
     with connect_db.cursor() as cursor:
 
         stat="""
-        UPDATE `stat` SET `狀態` = '0' WHERE `帳號` = %s
+        UPDATE `stat` SET `狀態` = %s WHERE `帳號` = %s
         """
 
-        cursor.execute(stat,[userid])
+        cursor.execute(stat,[str(st),userid])
         connect_db.commit()
     connect_db.close()
 def setMan(userid, tname):
