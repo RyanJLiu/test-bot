@@ -26,8 +26,7 @@ def mind():
         offer = """
         SELECT * from offer WHERE `帳號` = %s
         """
-        schedule=
-        """
+        schedule="""
         SELECT * from schedule WHERE `帳號` = %s
         """
 
